@@ -1,26 +1,15 @@
 pipeline {
 	agent {  
 		docker { 
-			image 'maven:3.3.3' 
+			image 'maven:3.6.3' 
 		} 
 	}
 	stages {
-		stage('log.version.info'){
+		stage('Build'){
 			steps {
-				sh "mvn --version"
+				sh 'mvn --version'
 				echo "Build"
 			}
 		}
 	} 
-	post {
-		always {
-			echo ('Im awesome. I run always')
-		}
-		success {
-			echo ('I run when it is successful')
-		}
-		failure {
-			echo ('I run when it fails')
-		}
-	}
 }
