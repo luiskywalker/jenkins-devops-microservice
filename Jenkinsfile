@@ -1,15 +1,15 @@
 pipeline {
-	// agent {  
-	// 	docker { 
-	// 		image 'maven:3.6.3' 
-	// 	} 
-	// }
-	agent any
-	environment {
-		dockerHome = tool 'myDocker'
-		mavenHome = tool 'myMaven'
-		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+	agent {  
+		docker { 
+			image 'luiskywalker/javamav:release1' 
+		} 
 	}
+	agent any
+	// environment {
+	// 	dockerHome = tool 'myDocker'
+	// 	mavenHome = tool 'myMaven'
+	// 	PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+	// }
 	stages {
 		stage('Checkout') {
 			agent any
@@ -17,19 +17,9 @@ pipeline {
 			// 	jdk 'Java8u202'
 			// }
             steps {
-				// Authenticate with Docker Hub
-                docker.auth('luiskywalker')
-
-                // Pull the customized image
-                def customImage = docker.image('luiskywalker/javamav:release1')
-
-                // Use the image in your pipeline steps
-                customImage.inside {
-                    sh "java --version"
-                    sh "mvn --version"
-                }
+				
 				sh 'mvn --version'
-				sh 'docker version'
+				//sh 'docker version'
 				sh 'java --version'
                 echo "PATH - $PATH"
                 echo "BUILD_NUMBER - $env.BUILD_NUMBER"
