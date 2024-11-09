@@ -35,15 +35,16 @@ pipeline {
                 echo "JOB_NAME - $env.JOB_NAME"
                 echo "BUILD_TAG - $env.BUILD_TAG"
                 echo "BUILD_URL - $env.BUILD_URL"
-				sh "mvn clean compile"
-				sh "mvn test"
-				sh "mvn failsafe:integration-test failsafe:verify"
+				// sh "mvn clean compile"
+				// sh "mvn test"
+				// sh "mvn failsafe:integration-test failsafe:verify"
             }
         }
 		stage('Compile'){
 			steps {
 				//sh "mvn clean compile"
-				echo 'compile temp'
+				 sh "mvn clean compile"
+				 echo 'compile temp'
 			}
 		}
 		stage('Test') {
