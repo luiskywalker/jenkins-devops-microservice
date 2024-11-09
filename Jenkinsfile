@@ -31,7 +31,8 @@ pipeline {
 				sh "mvn clean compile"
 			}
 		}
-		stage('Test') {agent {  
+		stage('Test') {
+			agent {  
 				docker { 
 					image 'luiskywalker/javamav:release1' 
 					reuseNode true
