@@ -43,14 +43,14 @@ pipeline {
 		stage('Compile'){
 			steps {
 				//sh "mvn clean compile"
-				 sh "mvn clean compile"
-				 echo 'compile temp'
+				sh "mvn clean compile"
+				//echo 'compile temp'
 			}
 		}
 		stage('Test') {
 			steps {
-				//sh "mvn test"
-				echo 'test temp'
+				sh "mvn test"
+				//echo 'test temp'
 			}
 		}
 		// stage('Integration Test') {
