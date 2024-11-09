@@ -2,6 +2,7 @@ pipeline {
 	agent {  
 		docker { 
 			image 'luiskywalker/javamav:release1' 
+			reuseNode true
 		} 
 	}
 	//agent any
