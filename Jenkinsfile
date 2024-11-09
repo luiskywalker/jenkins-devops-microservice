@@ -32,6 +32,29 @@ pipeline {
 				sh "mvn failsafe:integration-test failsafe:verify"
 			}
 		}
+		stage('Package') {
+			steps {
+				sh "mvn package -DskipTests"
+			}
+		}
+		stage ('Build Docker Image'){
+			steps {
+				//"docker build -t luiskywalker/currency-exchange-devops:$env.BUILD_TAG"//This is a way of do this
+				script { //creating a script is a more modern way to do the same thing
+					dockerImage = docker.build("luiskywalker/currency-exchange-devops:${env.BUILD_TAG}")
+				}
+			}
+		}
+		stage ('Push Docker Image'){
+			steps {
+				script {
+					docker.withRegistry('', 'dockerhub'){
+						dockerImage.push();
+						dockerImage.push('latest');
+					}
+				}
+			}
+		}
 	} 
 	post {
 		always {
