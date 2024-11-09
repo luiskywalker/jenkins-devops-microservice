@@ -4,7 +4,7 @@ pipeline {
 			image 'luiskywalker/javamav:release1' 
 		} 
 	}
-	agent any
+	//agent any
 	// environment {
 	// 	dockerHome = tool 'myDocker'
 	// 	mavenHome = tool 'myMaven'
