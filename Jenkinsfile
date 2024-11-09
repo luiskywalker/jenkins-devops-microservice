@@ -36,6 +36,8 @@ pipeline {
                 echo "BUILD_TAG - $env.BUILD_TAG"
                 echo "BUILD_URL - $env.BUILD_URL"
 				sh "mvn clean compile"
+				sh "mvn test"
+				sh "mvn failsafe:integration-test failsafe:verify"
             }
         }
 		stage('Compile'){
@@ -46,7 +48,8 @@ pipeline {
 		}
 		stage('Test') {
 			steps {
-				sh "mvn test"
+				//sh "mvn test"
+				echo 'test temp'
 			}
 		}
 		// stage('Integration Test') {
