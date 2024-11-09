@@ -14,7 +14,7 @@ pipeline {
 		stage('Checkout') {
 			agent any
             tools {
-				jdk 'Java8u221'
+				jdk 'Java8u202'
 			}
             steps {
 				sh 'mvn --version'
