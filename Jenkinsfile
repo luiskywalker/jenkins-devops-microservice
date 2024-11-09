@@ -35,11 +35,13 @@ pipeline {
                 echo "JOB_NAME - $env.JOB_NAME"
                 echo "BUILD_TAG - $env.BUILD_TAG"
                 echo "BUILD_URL - $env.BUILD_URL"
+				sh "mvn clean compile"
             }
         }
 		stage('Compile'){
 			steps {
-				sh "mvn clean compile"
+				//sh "mvn clean compile"
+				echo 'compile temp'
 			}
 		}
 		stage('Test') {
