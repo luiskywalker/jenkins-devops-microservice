@@ -17,6 +17,17 @@ pipeline {
 			// 	jdk 'Java8u202'
 			// }
             steps {
+				// Authenticate with Docker Hub
+                docker.auth('luiskywalker')
+
+                // Pull the customized image
+                def customImage = docker.image('luiskywalker/javamav:release1')
+
+                // Use the image in your pipeline steps
+                customImage.inside {
+                    sh "java --version"
+                    sh "mvn --version"
+                }
 				sh 'mvn --version'
 				sh 'docker version'
 				sh 'java --version'
