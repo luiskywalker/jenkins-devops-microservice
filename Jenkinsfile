@@ -1,25 +1,25 @@
 pipeline {
 	agent any
 	stages {
-		stage('Maven Install') {
-			agent {  
-				docker { 
-					image 'luiskywalker/javamav:release1' 
-					reuseNode true
-				} 
-			}
-            steps {
-				sh 'ls -la'
-				sh 'mvn --version'
-                echo "PATH - $PATH"
-                echo "BUILD_NUMBER - $env.BUILD_NUMBER"
-                echo "BUILD_ID - $env.BUILD_ID"
-                echo "JOB_NAME - $env.JOB_NAME"
-                echo "BUILD_TAG - $env.BUILD_TAG"
-                echo "BUILD_URL - $env.BUILD_URL"
-				sh 'ls -la'
-            }
-        }
+		// stage('Maven Install') {
+		// 	agent {  
+		// 		docker { 
+		// 			image 'luiskywalker/javamav:release1' 
+		// 			reuseNode true
+		// 		} 
+		// 	}
+        //     steps {
+		// 		sh 'ls -la'
+		// 		sh 'mvn --version'
+        //         echo "PATH - $PATH"
+        //         echo "BUILD_NUMBER - $env.BUILD_NUMBER"
+        //         echo "BUILD_ID - $env.BUILD_ID"
+        //         echo "JOB_NAME - $env.JOB_NAME"
+        //         echo "BUILD_TAG - $env.BUILD_TAG"
+        //         echo "BUILD_URL - $env.BUILD_URL"
+		// 		sh 'ls -la'
+        //     }
+        // }
 		stage('Compile'){
 			agent {  
 				docker { 
