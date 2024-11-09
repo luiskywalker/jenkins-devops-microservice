@@ -13,9 +13,9 @@ pipeline {
 	stages {
 		stage('Checkout') {
 			agent any
-            tools {
-				jdk 'Java8u202'
-			}
+            // tools {
+			// 	jdk 'Java8u202'
+			// }
             steps {
 				sh 'mvn --version'
 				sh 'docker version'
