@@ -1,10 +1,11 @@
 pipeline {
-	agent {  
-		docker { 
-			image 'luiskywalker/javamav:release1' 
-			reuseNode true
-		} 
-	}
+	agent any
+	// agent {  
+	// 	docker { 
+	// 		image 'luiskywalker/javamav:release1' 
+	// 		reuseNode true
+	// 	} 
+	// }
 	//agent any
 	// environment {
 	// 	dockerHome = tool 'myDocker'
@@ -13,10 +14,16 @@ pipeline {
 	// }
 	stages {
 		stage('Checkout') {
-			agent any
+			//agent any
             // tools {
 			// 	jdk 'Java8u202'
 			// }
+			 agent {
+                docker {
+                    image 'luiskywalker/javamav:release1'
+                    reuseNode true
+                }
+            }
             steps {
 				
 				sh 'mvn --version'
