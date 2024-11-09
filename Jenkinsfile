@@ -53,11 +53,11 @@ pipeline {
 				//echo 'test temp'
 			}
 		}
-		// stage('Integration Test') {
-		// 	steps {
-		// 		sh "mvn failsafe:integration-test failsafe:verify"
-		// 	}
-		// }
+		stage('Integration Test') {
+			steps {
+				sh "mvn failsafe:integration-test failsafe:verify"
+			}
+		}
 	} 
 	post {
 		always {
